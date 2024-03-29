@@ -1,0 +1,16 @@
+{
+    "files.associations": {
+        "sapp_task.h": "c",
+        "sapp_work.h": "c",
+        "sbsp_adc.h": "c",
+        "sbsp_gpio.h": "c",
+        "sbsp_i2c.h": "c",
+        "sbsp_spi.h": "c",
+        "sbsp_sys.h": "c",
+        "stm32l0xx_hal.h": "c",
+        "sdrv_aht10.h": "c",
+        "sdrv_bmp280.h": "c",
+        "sdrv_g01.h": "c",
+        "sdrv_temt6000.h": "c"
+    }
+}

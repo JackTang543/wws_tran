@@ -1,0 +1,6 @@
+load STM32L031G6Ux 
+project name STCubeGenerated 
+project toolchain "MDK-ARM V5" 
+project path "D:\01-Embedded\01-Project\01_HNIP\05-WirelessWeatherStation\WWS32\WWS_Tran\wws_tran\KEIL_Project\RTE\Device\STM32L031G6Ux\" 
+set tpl_path "D:\Appdata\KEIL_MDK\Keil\STM32L0xx_DFP\2.2.0\MDK\CubeMX" 
+set dest_path "STM32L031G6Ux" 
