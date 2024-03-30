@@ -11,6 +11,8 @@
         "sdrv_aht10.h": "c",
         "sdrv_bmp280.h": "c",
         "sdrv_g01.h": "c",
-        "sdrv_temt6000.h": "c"
+        "sdrv_temt6000.h": "c",
+        "sdrv_uart.h": "c",
+        "stdarg.h": "c"
     }
 }

@@ -424,6 +424,11 @@
               <FileType>1</FileType>
               <FilePath>..\sBSP\sBSP_SYS.c</FilePath>
             </File>
+            <File>
+              <FileName>sBSP_UART.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\sBSP\sBSP_UART.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -478,6 +483,11 @@
               <FileName>sDRV_LED.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\sDRV\sDRV_LED.c</FilePath>
+            </File>
+            <File>
+              <FileName>sDRV_UART.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\sDRV\sDRV_UART.c</FilePath>
             </File>
           </Files>
         </Group>
