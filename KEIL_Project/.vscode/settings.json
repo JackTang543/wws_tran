@@ -13,6 +13,11 @@
         "sdrv_g01.h": "c",
         "sdrv_temt6000.h": "c",
         "sdrv_uart.h": "c",
-        "stdarg.h": "c"
-    }
+        "stdarg.h": "c",
+        "sbsp_uart.h": "c",
+        "stm32l0xx_it.h": "c",
+        "sbsp_tim.h": "c",
+        "sdrv_led.h": "c"
+    },
+    "commentTranslate.hover.enabled": true
 }

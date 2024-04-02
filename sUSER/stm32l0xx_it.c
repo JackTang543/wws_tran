@@ -23,6 +23,11 @@
 #include "stm32l0xx_hal.h"
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
+
+extern UART_HandleTypeDef huart1;
+
+extern I2C_HandleTypeDef hi2c1;
+
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -133,6 +138,19 @@ void SysTick_Handler(void)
 
   /* USER CODE END SysTick_IRQn 1 */
 }
+
+void LPUART1_IRQHandler(){
+    HAL_UART_IRQHandler(&huart1);
+}
+
+void I2C1_IRQHandler(){
+    if (hi2c1.Instance->ISR & (I2C_FLAG_BERR | I2C_FLAG_ARLO | I2C_FLAG_OVR)) {
+    HAL_I2C_ER_IRQHandler(&hi2c1);
+  } else {
+    HAL_I2C_EV_IRQHandler(&hi2c1);
+  }
+}
+
 
 /******************************************************************************/
 /* STM32L0xx Peripheral Interrupt Handlers                                    */

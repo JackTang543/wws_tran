@@ -3,14 +3,10 @@
 #ifndef __SBSP_SYS_H__
 #define __SBSP_SYS_H__
 
-#ifdef __cplusplus
-extern "C"{
-#endif
+
+
+void sBSP_SYS_InitRCC();
 
 
 
-
-#ifdef __cplusplus
-}
-#endif
 #endif

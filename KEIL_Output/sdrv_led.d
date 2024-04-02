@@ -60,4 +60,6 @@
   ..\sHAL\STM32L0xx_HAL_Driver\Inc\stm32l0xx_hal_smbus_ex.h \
   ..\sHAL\STM32L0xx_HAL_Driver\Inc\stm32l0xx_hal_wwdg.h \
   ..\sHAL\STM32L0xx_HAL_Driver\Inc\stm32l0xx_hal_pcd.h \
-  ..\sHAL\STM32L0xx_HAL_Driver\Inc\stm32l0xx_ll_usb.h
+  ..\sHAL\STM32L0xx_HAL_Driver\Inc\stm32l0xx_ll_usb.h \
+  D:\Appdata\KEIL_MDK\ARM\ARMCLANG\Bin\..\include\math.h \
+  ..\sBSP\sBSP_TIM.h

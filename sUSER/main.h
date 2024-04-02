@@ -7,6 +7,10 @@ extern "C" {
 
 
 
+void sERROR_Handler();
+
+
+
 #ifdef __cplusplus
 }
 #endif
