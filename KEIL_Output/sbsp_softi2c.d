@@ -1,4 +1,5 @@
-../keil_output/sdrv_aht10.o: ..\sDRV\sDRV_AHT10.c ..\sDRV\sDRV_AHT10.h \
+../keil_output/sbsp_softi2c.o: ..\sBSP\sBSP_softI2C.c \
+  ..\sBSP\sBSP_softI2C.h \
   ..\sHAL\STM32L0xx_HAL_Driver\Inc\stm32l0xx_hal.h \
   ..\sUSER\stm32l0xx_hal_conf.h \
   ..\sHAL\STM32L0xx_HAL_Driver\Inc\stm32l0xx_hal_rcc.h \
@@ -60,5 +61,4 @@
   ..\sHAL\STM32L0xx_HAL_Driver\Inc\stm32l0xx_hal_smbus_ex.h \
   ..\sHAL\STM32L0xx_HAL_Driver\Inc\stm32l0xx_hal_wwdg.h \
   ..\sHAL\STM32L0xx_HAL_Driver\Inc\stm32l0xx_hal_pcd.h \
-  ..\sHAL\STM32L0xx_HAL_Driver\Inc\stm32l0xx_ll_usb.h \
-  ..\sBSP\sBSP_softI2C.h ..\sBSP\sBSP_I2C.h
+  ..\sHAL\STM32L0xx_HAL_Driver\Inc\stm32l0xx_ll_usb.h

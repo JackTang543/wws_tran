@@ -3,6 +3,9 @@
 #ifndef __SDRV_BMP280_H__
 #define __SDRV_BMP280_H__
 
+#ifdef __cplusplus
+extern "C"{
+#endif
 
 //使用超高解析度
 #define sDRV_BMP280_USE_MAX_RESOLUTION
@@ -42,5 +45,7 @@ double sDRV_BMP280_GetPress();
 double sDRV_BMP280_GetTemp();
 
 
-
+#ifdef __cplusplus
+}
+#endif
 #endif

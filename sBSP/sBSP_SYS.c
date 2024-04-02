@@ -57,7 +57,7 @@ void sBSP_SYS_InitRCC(){
   {
     sERROR_Handler();
   }
-  HAL_RCC_MCOConfig(RCC_MCO1, RCC_MCO1SOURCE_LSE, RCC_MCODIV_1);
+  //HAL_RCC_MCOConfig(RCC_MCO1, RCC_MCO1SOURCE_LSE, RCC_MCODIV_1);
 }
 
 void sBSP_SYS_InitNVIC(){

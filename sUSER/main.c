@@ -13,9 +13,12 @@
 #include "stm32l0xx_hal.h"
 
 #include "sDRV_UART.h"
-#include "sDRV_BMP280.h"
-
 #include "sDRV_LED.h"
+#include "sDRV_BMP280.h"
+#include "sDRV_AHT10.h"
+
+
+
 #include "sBSP_TIM.h"
 
 
@@ -57,15 +60,19 @@ int main(void){
 
     //sBSP_TIM2_Init();
     //sBSP_TIM2_SetCH3PWMEN(1);
-
+    sDRV_AHT10_Init();
     sDRV_BMP280_Init();
-    //过滤掉前两个错误数据
-    sDRV_BMP280_GetMeasure();
-    sDRV_BMP280_GetTemp();
-    sDRV_BMP280_GetPress();
-    sDRV_BMP280_GetMeasure();
-    sDRV_BMP280_GetTemp();
-    sDRV_BMP280_GetPress();
+
+   //过滤掉前两个错误数据
+   sDRV_BMP280_GetMeasure();
+   sDRV_BMP280_GetTemp();
+   sDRV_BMP280_GetPress();
+   sDRV_BMP280_GetMeasure();
+   sDRV_BMP280_GetTemp();
+   sDRV_BMP280_GetPress();
+
+    
+    HAL_Delay(100);
     
     while (1){
         //HAL_GPIO_TogglePin(GPIOB,GPIO_PIN_0);
@@ -73,11 +80,17 @@ int main(void){
 
         sDRV_BMP280_GetMeasure();
         
+        sDRV_UART_Printf("TEMP: %.2f ℃,PRESS: %.3f Pa ",sDRV_BMP280_GetTemp(),sDRV_BMP280_GetPress());
         
-        sDRV_UART_Printf("TEMP: %.2f ℃,PRESS: %.3f Pa \n",sDRV_BMP280_GetTemp(),sDRV_BMP280_GetPress());
-
+        sDRV_AHT10_BeginMeasure();
         HAL_Delay(100);
+        sDRV_AHT10_EndMeasure();
+
+        sDRV_UART_Printf("   AHT10 TEMP: %.1f ℃,HUMI: %.1f %%RH",sDRV_AHT10_GetTemp(),sDRV_AHT10_GetHumi());
         
+        sDRV_UART_Printf("\n");
+        
+        HAL_Delay(300);
     }
 }
 

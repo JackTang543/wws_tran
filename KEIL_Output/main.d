@@ -65,6 +65,7 @@
   D:\Appdata\KEIL_MDK\ARM\ARMCLANG\Bin\..\include\stdarg.h \
   D:\Appdata\KEIL_MDK\ARM\ARMCLANG\Bin\..\include\stdio.h \
   D:\Appdata\KEIL_MDK\ARM\ARMCLANG\Bin\..\include\string.h \
-  ..\sDRV\sDRV_BMP280.h ..\sDRV\sDRV_LED.h \
+  ..\sDRV\sDRV_LED.h \
   D:\Appdata\KEIL_MDK\ARM\ARMCLANG\Bin\..\include\math.h \
-  ..\sBSP\sBSP_TIM.h ..\sBSP\sBSP_SYS.h
+  ..\sDRV\sDRV_BMP280.h ..\sDRV\sDRV_AHT10.h ..\sBSP\sBSP_TIM.h \
+  ..\sBSP\sBSP_SYS.h

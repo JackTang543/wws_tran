@@ -17,7 +17,8 @@
         "sbsp_uart.h": "c",
         "stm32l0xx_it.h": "c",
         "sbsp_tim.h": "c",
-        "sdrv_led.h": "c"
+        "sdrv_led.h": "c",
+        "sbsp_softspi.h": "c"
     },
     "commentTranslate.hover.enabled": true
 }

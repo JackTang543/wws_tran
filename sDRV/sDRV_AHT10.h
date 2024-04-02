@@ -8,6 +8,14 @@ extern "C"{
 #endif
 
 
+#define AHT10_ADDR (0x38 << 1)
+
+
+void sDRV_AHT10_Init(void);
+void sDRV_AHT10_BeginMeasure();
+void sDRV_AHT10_EndMeasure();
+float sDRV_AHT10_GetHumi();
+float sDRV_AHT10_GetTemp();
 
 
 #ifdef __cplusplus
