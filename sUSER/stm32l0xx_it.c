@@ -151,6 +151,10 @@ void I2C1_IRQHandler(){
   }
 }
 
+void EXTI4_15_IRQHandler(){
+    HAL_GPIO_EXTI_IRQHandler(GPIO_PIN_7);
+}
+
 
 /******************************************************************************/
 /* STM32L0xx Peripheral Interrupt Handlers                                    */

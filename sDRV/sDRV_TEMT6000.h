@@ -7,7 +7,7 @@
 extern "C"{
 #endif
 
-
+float sDRV_TEMT_GetLight();
 
 
 #ifdef __cplusplus

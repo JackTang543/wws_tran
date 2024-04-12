@@ -7,7 +7,8 @@
 extern "C"{
 #endif
 
-
+void sBSP_ADC_Init();
+uint16_t sBSP_ADC_GetChannel(uint32_t channel);
 
 
 #ifdef __cplusplus

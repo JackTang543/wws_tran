@@ -2,10 +2,10 @@
 
 //软件I2C,STM32版本 v1.0 by sightseer. in9607
 
-#define GPIO_SCL        GPIOB
-#define GPIO_SCL_PIN    GPIO_PIN_7
+#define GPIO_SCL        GPIOA
+#define GPIO_SCL_PIN    GPIO_PIN_8
 #define GPIO_SDA        GPIOB
-#define GPIO_SDA_PIN    GPIO_PIN_6
+#define GPIO_SDA_PIN    GPIO_PIN_1
 
 #define XUS    (10)
 
@@ -33,15 +33,21 @@ static inline uint8_t getSDA(){
 
 
 void sBSP_softI2C_Init(){
+    __GPIOA_CLK_ENABLE();
     __GPIOB_CLK_ENABLE();
         
     GPIO_InitTypeDef GPIO_InitStruct = {0};
 
     GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_OD;
-    GPIO_InitStruct.Pin = GPIO_SCL_PIN | GPIO_SDA_PIN;
+    GPIO_InitStruct.Pin = GPIO_SCL_PIN;
     //GPIO_InitStruct.Pull = GPIO_PULLUP;
     GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_HIGH;
     GPIO_InitStruct.Alternate = 0x0;
+    //初始化SCL
+    HAL_GPIO_Init(GPIOA,&GPIO_InitStruct);
+    
+    //初始化SDA
+    GPIO_InitStruct.Pin = GPIO_SDA_PIN;
     HAL_GPIO_Init(GPIOB,&GPIO_InitStruct);
 
     setSCL(1); setSDA(1);

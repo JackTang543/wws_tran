@@ -394,6 +394,11 @@
               <FileType>1</FileType>
               <FilePath>..\sAPP\sAPP_Work.c</FilePath>
             </File>
+            <File>
+              <FileName>sAPP_Func.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\sAPP\sAPP_Func.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -433,6 +438,11 @@
               <FileName>sBSP_softI2C.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\sBSP\sBSP_softI2C.c</FilePath>
+            </File>
+            <File>
+              <FileName>sBSP_softSPI.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\sBSP\sBSP_softSPI.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -475,11 +485,6 @@
               <FilePath>..\sDRV\sDRV_BMP280.c</FilePath>
             </File>
             <File>
-              <FileName>sDRV_G01.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\sDRV\sDRV_G01.c</FilePath>
-            </File>
-            <File>
               <FileName>sDRV_TEMT6000.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\sDRV\sDRV_TEMT6000.c</FilePath>
@@ -498,6 +503,11 @@
               <FileName>sBSP_TIM.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\sBSP\sBSP_TIM.c</FilePath>
+            </File>
+            <File>
+              <FileName>sDRV_Si24R1.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\sDRV\sDRV_Si24R1.c</FilePath>
             </File>
           </Files>
         </Group>
