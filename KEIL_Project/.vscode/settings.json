@@ -20,7 +20,8 @@
         "sdrv_led.h": "c",
         "sbsp_softspi.h": "c",
         "stm32l0xx_hal_adc_ex.h": "c",
-        "main.h": "c"
+        "main.h": "c",
+        "sbsp_rtc.h": "c"
     },
     "commentTranslate.hover.enabled": true
 }

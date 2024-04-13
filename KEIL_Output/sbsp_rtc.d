@@ -1,4 +1,4 @@
-../keil_output/sbsp_uart.o: ..\sBSP\sBSP_UART.c ..\sBSP\sBSP_UART.h \
+../keil_output/sbsp_rtc.o: ..\sBSP\sBSP_RTC.c ..\sBSP\sBSP_RTC.h \
   ..\sHAL\STM32L0xx_HAL_Driver\Inc\stm32l0xx_hal.h \
   ..\sUSER\stm32l0xx_hal_conf.h \
   ..\sHAL\STM32L0xx_HAL_Driver\Inc\stm32l0xx_hal_rcc.h \
@@ -60,13 +60,4 @@
   ..\sHAL\STM32L0xx_HAL_Driver\Inc\stm32l0xx_hal_smbus_ex.h \
   ..\sHAL\STM32L0xx_HAL_Driver\Inc\stm32l0xx_hal_wwdg.h \
   ..\sHAL\STM32L0xx_HAL_Driver\Inc\stm32l0xx_hal_pcd.h \
-  ..\sHAL\STM32L0xx_HAL_Driver\Inc\stm32l0xx_ll_usb.h ..\sUSER\main.h \
-  ..\sDRV\sDRV_UART.h \
-  D:\Appdata\KEIL_MDK\ARM\ARMCLANG\Bin\..\include\stdarg.h \
-  D:\Appdata\KEIL_MDK\ARM\ARMCLANG\Bin\..\include\stdio.h \
-  D:\Appdata\KEIL_MDK\ARM\ARMCLANG\Bin\..\include\string.h \
-  ..\sDRV\sDRV_LED.h \
-  D:\Appdata\KEIL_MDK\ARM\ARMCLANG\Bin\..\include\math.h \
-  ..\sDRV\sDRV_BMP280.h ..\sDRV\sDRV_AHT10.h ..\sBSP\sBSP_TIM.h \
-  ..\sBSP\sBSP_SYS.h ..\sDRV\sDRV_Si24R1.h ..\sAPP\sAPP_Func.h \
-  ..\sBSP\sBSP_ADC.h ..\sDRV\sDRV_TEMT6000.h ..\sBSP\sBSP_RTC.h
+  ..\sHAL\STM32L0xx_HAL_Driver\Inc\stm32l0xx_ll_usb.h

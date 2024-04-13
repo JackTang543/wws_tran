@@ -6,7 +6,7 @@
 
 
 void sBSP_SYS_InitRCC();
-
+void sBSP_SYS_PWR_Init();
 
 
 #endif

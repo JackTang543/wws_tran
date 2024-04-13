@@ -69,4 +69,4 @@
   D:\Appdata\KEIL_MDK\ARM\ARMCLANG\Bin\..\include\math.h \
   ..\sDRV\sDRV_BMP280.h ..\sDRV\sDRV_AHT10.h ..\sBSP\sBSP_TIM.h \
   ..\sDRV\sDRV_Si24R1.h ..\sAPP\sAPP_Func.h ..\sBSP\sBSP_ADC.h \
-  ..\sDRV\sDRV_TEMT6000.h
+  ..\sDRV\sDRV_TEMT6000.h ..\sBSP\sBSP_RTC.h

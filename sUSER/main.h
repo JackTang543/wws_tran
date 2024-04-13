@@ -19,7 +19,7 @@
 #include "sBSP_ADC.h"
 
 #include "sDRV_TEMT6000.h"
-
+#include "sBSP_RTC.h"
 
 
 #ifdef __cplusplus

@@ -28,6 +28,8 @@ extern UART_HandleTypeDef huart1;
 
 extern I2C_HandleTypeDef hi2c1;
 
+extern RTC_HandleTypeDef hrtc;
+
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -154,6 +156,13 @@ void I2C1_IRQHandler(){
 void EXTI4_15_IRQHandler(){
     HAL_GPIO_EXTI_IRQHandler(GPIO_PIN_7);
 }
+
+void RTC_IRQHandler(void)
+{
+  HAL_RTC_AlarmIRQHandler(&hrtc);
+  //HAL_RTCEx_WakeUpTimerIRQHandler(&hrtc);
+}
+
 
 
 /******************************************************************************/
