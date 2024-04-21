@@ -19,14 +19,14 @@ void sFUNC_InitLED(){
 }
 
 
-//��ʼ��2.4GHz
+//初始化2.4GHz
 void sFUNC_Init2d4GHz(){
     Si24R1_Conf_t si24r1 = {0};
-    //��ַ����
+    //地址宽度
     si24r1.addr_width = ADDR_WIDTH_5;
-    //���յ�ַP0
+    //接收地址P0
     si24r1.addr.rx_addr_p0 = 0x123456789a;
-    //���յ�ַP1
+    //接收地址P1
     si24r1.addr.rx_addr_p1 = 0x1111111111;
     //P2
     si24r1.addr.rx_addr_p2 = 0x22;
@@ -36,42 +36,42 @@ void sFUNC_Init2d4GHz(){
     si24r1.addr.rx_addr_p4 = 0x44;
     //P5
     si24r1.addr.rx_addr_p5 = 0x55;
-    //���͵�ַ
+    //发送地址
     si24r1.addr.tx_addr = 0x123456789a;
-    //�Զ�ȷ��ʹ��
+    //自动确认使能
     si24r1.aa_en = EN_AA_ENAA_P0 | EN_AA_ENAA_P1 | EN_AA_ENAA_P2 | EN_AA_ENAA_P3 | EN_AA_ENAA_P4 | EN_AA_ENAA_P5;
-    //ACKģʽ
+    //ACK模式
     si24r1.ack_mode = ACK_MODE_DIS;
-    //�Զ��ط�����
+    //自动重发次数
     si24r1.arc_times = 10;
-    //�Զ��ط��ӳ�
+    //自动重发延迟
     si24r1.ard_us = 1000;
-    //CRCʹ��
+    //CRC使能
     si24r1.crc_en = CRC_DIS;
-    //CRC����
+    //CRC长度
     si24r1.crc_len = CRC_LEN_2;
-    //��̬���س���
+    //动态负载长度
     si24r1.dynpd = DYNPD_DPL_P0 | DYNPD_DPL_P1 | DYNPD_DPL_P2 | DYNPD_DPL_P3 | DYNPD_DPL_P4 | DYNPD_DPL_P5;
-    //ACK����
+    //ACK负载
     si24r1.en_ack_payd = EN_ACK_PAYD_DIS;
-    //ʹ�ܶ�̬����
+    //使能动态负载
     si24r1.en_dpl = EN_DPL_DIS;
-    //���仹�ǽ���ģʽ
+    //发射还是接收模式
     si24r1.mode = MODE_TX;
-    //��Ƶ�ŵ�
+    //射频信道
     si24r1.rf_ch = 100;
-    //���书��
+    //发射功率
     si24r1.rf_pwr = RF_PWR_4DBM;
-    //��Ƶ����
+    //射频速率
     si24r1.rf_spd = RF_SPD_250K;
-    //���չܵ�����
+    //接收管道长度
     si24r1.rx_pw.rx_pw_p0 = 32;
     si24r1.rx_pw.rx_pw_p1 = 32;
     si24r1.rx_pw.rx_pw_p2 = 32;
     si24r1.rx_pw.rx_pw_p3 = 32;
     si24r1.rx_pw.rx_pw_p4 = 32;
     si24r1.rx_pw.rx_pw_p5 = 32;
-    //���չܵ�ʹ��
+    //接收管道使能
     si24r1.rxaddr_en = EN_RXADDR_MSK_ERX_P5 | EN_RXADDR_MSK_ERX_P4 | EN_RXADDR_MSK_ERX_P3 | \
                        EN_RXADDR_MSK_ERX_P2 | EN_RXADDR_MSK_ERX_P0 | EN_RXADDR_MSK_ERX_P0;
     si24r1.irq_msk = 0;

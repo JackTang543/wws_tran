@@ -86,6 +86,13 @@ HAL_StatusTypeDef sDRV_BMP280_Init(){
     Delay_ms(5);
     #endif
 
+    #ifdef sDRV_BMP280_USE_ULTRA_LOW_PWR
+    //气压过采样:x1,温度过采样:x1,IIR滤波:off,Timing:0.5ms,Mode:Normal
+    uint8_t conf_seq[] = {BMP280_REG_CTRL_MEAS,0x27,BMP280_REG_CONFIG,0x00};
+    HAL_I2C_Master_Transmit_IT(&hi2c1,BMP280_ADDR,conf_seq,4);
+    Delay_ms(5);
+    #endif
+
 //    sHMI_Debug_Printf("calibration data:");
 //    for(uint8_t i = 0;i < 26;i++){
 //        sHMI_Debug_Printf("0x%02X  ",bmp280.cal_val[i]);
@@ -104,6 +111,11 @@ HAL_StatusTypeDef sDRV_BMP280_Init(){
     (((uint16_t)bmp280.cal_val[((i*2))+1])<<8)|((uint16_t)bmp280.cal_val[(i*2)]);
     
     return HAL_OK;
+}
+
+void sDRV_BMP280_SetModeSleep(){
+    uint8_t conf_seq[] = {BMP280_REG_CTRL_MEAS,0x24};
+    HAL_I2C_Master_Transmit_IT(&hi2c1,BMP280_ADDR,conf_seq,2);
 }
 
 /*@brief  BMP280获取测量值

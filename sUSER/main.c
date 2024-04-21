@@ -11,12 +11,16 @@
  * 描述:低功耗优化Demo完工
  * v1.1
  *
+ * TIME:2024.04.13
+ * 描述:RTC定时唤醒+数据测量发送
+ * v1.2
+ *
 */
 
 #include "main.h"
 
 //软件版本
-#define SW_VERSION      "ver1.1"
+#define SW_VERSION      "ver1.2"
 
 #define DEBUG_EN
 
@@ -64,6 +68,7 @@ void data_process(){
     sDRV_AHT10_BeginMeasure();
     //启动BMP280的测量
     sDRV_BMP280_GetMeasure();
+    sDRV_TEMT_Startup();
     HAL_Delay(100);
     sDRV_AHT10_EndMeasure();
 
@@ -74,6 +79,8 @@ void data_process(){
     packet.bmp280_temp = (float)sDRV_BMP280_GetTemp();
     packet.temt_mv = sDRV_TEMT_GetLight();
     packet.vbat = sAPP_Func_GetVbat();
+
+    sDRV_TEMT_Shutdown();
 
     //把数据复制到发送缓冲区
     memcpy(tx_buf,&packet,sizeof(data_packet_t));
@@ -88,6 +95,11 @@ void data_process(){
     sDRV_UART_Printf("LIGHT:%.2f mV,Vbat:%.2f mV\n",packet.temt_mv,packet.vbat);
     #endif
 
+    sDRV_BMP280_SetModeSleep();
+    sDRV_Si24R1_SetStandby();
+    sDRV_Si24R1_SetShutdown();
+    sDRV_UART_Printf("Si24R1 start shutdown!\n");
+
     #ifdef DEBUG_EN
     __SET_DEBUG_LED(0);
     #endif
@@ -101,36 +113,32 @@ void init_system(){
     sDRV_UART_Init(115200);
 
     sBSP_SYS_PWR_Init();
-
-    //串口发送当前版本信息
-    // sDRV_UART_Printf("Wireless Weather Station Tran bySightseer.\n");
-    // sDRV_UART_Printf("%s Compile time: %s %s\n",SW_VERSION,__DATE__,__TIME__);
-    //发送当前MCU频率
-    uint32_t sys_freq = HAL_RCC_GetSysClockFreq();
-    sDRV_UART_Printf("Freq: %d Hz\n",sys_freq);
     
     //初始化LED
     sFUNC_InitLED();
     __SET_DEBUG_LED(0);
-    // sDRV_UART_Printf("LED init OK.\n");
-    // //初始化AHT10
-    // sDRV_AHT10_Init();
-    // sDRV_UART_Printf("AHT10 init OK.\n");
-    // //初始化BMP280
-    // sDRV_BMP280_Init();
-    // sDRV_UART_Printf("BMP280 init OK.\n");
-    // //初始化TEMT6000(ADC)
-    // sBSP_ADC_Init();
-    // sDRV_UART_Printf("TEMT6000(ADC) init OK.\n");
-    // //初始化Si24R1
-    // sFUNC_Init2d4GHz();
-    // sDRV_UART_Printf("Si24R1 init OK.\n");
+    //sDRV_UART_Printf("LED init OK.\n");
+    //初始化AHT10
+    sDRV_AHT10_Init();
+    //sDRV_UART_Printf("AHT10 init OK.\n");
+    //初始化BMP280
+    sDRV_BMP280_Init();
+    //sDRV_UART_Printf("BMP280 init OK.\n");
+    //初始化TEMT6000(ADC)
+    sBSP_ADC_Init();
+    sDRV_TEMT_Init();
+    //sDRV_UART_Printf("TEMT6000(ADC) init OK.\n");
+    //初始化Si24R1
+    sFUNC_Init2d4GHz();
+    //sDRV_UART_Printf("Si24R1 init OK.\n");
 
-    // sDRV_UART_Printf("all func init done.\n\n");
+    //sDRV_UART_Printf("all func init done.\n\n");
 
-    // //Si24R1进入空闲发送模式
-    // sDRV_Si24R1_SetIdleTX();
-    // sDRV_UART_Printf("Si24R1 start idle tx!\n");
+    sDRV_Si24R1_SetStandby();
+
+    //Si24R1进入空闲发送模式
+    sDRV_Si24R1_SetIdleTX();
+    //sDRV_UART_Printf("Si24R1 start idle tx!\n");
 }
 
 extern RTC_HandleTypeDef hrtc;
@@ -143,24 +151,31 @@ void HAL_RTCEx_WakeUpTimerEventCallback(RTC_HandleTypeDef *hrtc)
 
 int main(void){
     HAL_Init();
+
+
+    //初始化时钟系统
+    sBSP_SYS_InitRCC();
+    //初始化串口
+    sDRV_UART_Init(115200);
+    //初始化RTC
     sBSP_RTC_Init();
+    //初始化电源
+    sBSP_SYS_PWR_Init();
+    
+    
+
+    //串口发送当前版本信息
+    sDRV_UART_Printf("Wireless Weather Station Tran bySightseer.\n");
+    sDRV_UART_Printf("%s Compile time: %s %s\n",SW_VERSION,__DATE__,__TIME__);
+    //发送当前MCU频率
+    uint32_t sys_freq = HAL_RCC_GetSysClockFreq();
+    sDRV_UART_Printf("Freq: %d Hz\n",sys_freq);
+
     init_system();
+
 
     sBSP_RTC_SetTime(10,20,00);
     sBSP_RTC_SetDate(2024,RTC_MONTH_APRIL,13,RTC_WEEKDAY_SATURDAY);
-    
-    // RTC_AlarmTypeDef sAlarm = {0};
-    // sAlarm.Alarm = RTC_ALARM_A;
-    // sAlarm.AlarmDateWeekDay = RTC_WEEKDAY_MONDAY;
-    // sAlarm.AlarmDateWeekDaySel = RTC_ALARMDATEWEEKDAYSEL_DATE;
-    // sAlarm.AlarmMask = RTC_ALARMMASK_DATEWEEKDAY | RTC_ALARMMASK_HOURS | RTC_ALARMMASK_MINUTES; // 只在特定秒数时触发
-    // sAlarm.AlarmSubSecondMask = RTC_ALARMSUBSECONDMASK_NONE;
-    // sAlarm.AlarmTime.TimeFormat = RTC_HOURFORMAT12_AM;
-    // sAlarm.AlarmTime.Hours = 0;
-    // sAlarm.AlarmTime.Minutes = 30;
-    // sAlarm.AlarmTime.Seconds = 0;
-    // sAlarm.AlarmTime.SubSeconds = 0;
-    // HAL_RTC_SetAlarm_IT(&hrtc, &sAlarm, RTC_FORMAT_BIN);
 
     RTC_TimeTypeDef time = {0};
     RTC_DateTypeDef date = {0};
@@ -169,6 +184,23 @@ int main(void){
 
     while(1){
         init_system();
+        //初始化时钟系统
+        sBSP_SYS_InitRCC();
+        //初始化串口
+        sDRV_UART_Init(115200);
+        //初始化RTC
+        sBSP_RTC_Init();
+        //初始化电源
+        sBSP_SYS_PWR_Init();
+        
+        sDRV_Si24R1_SetStandby();
+
+    //Si24R1进入空闲发送模式
+    sDRV_Si24R1_SetIdleTX();
+
+        //发送当前MCU频率
+    uint32_t sys_freq = HAL_RCC_GetSysClockFreq();
+    sDRV_UART_Printf("Freq: %d Hz\n",sys_freq);
 
         sBSP_RTC_GetTime(&time);
         sBSP_RTC_GetDate(&date);
@@ -185,21 +217,22 @@ int main(void){
         sAlarm.AlarmTime.TimeFormat = RTC_HOURFORMAT12_AM;
         sAlarm.AlarmTime.Hours = time.Hours;
         sAlarm.AlarmTime.Minutes = time.Minutes;
-        sAlarm.AlarmTime.Seconds = (time.Seconds + 10) % 60;
-        sDRV_UART_Printf("set seconds:%d",(time.Seconds + 10) % 60);
+        sAlarm.AlarmTime.Seconds = (time.Seconds + 20) % 60;
+        sDRV_UART_Printf("set seconds:%d\n",(time.Seconds + 20) % 60);
         sAlarm.AlarmTime.SubSeconds = 0;
         HAL_RTC_SetAlarm_IT(&hrtc, &sAlarm, RTC_FORMAT_BIN);
 
-
-        //sDRV_UART_Printf("Wake up!\n");                                                        
+        data_process();
+        sDRV_UART_Printf("data process done.\n");            
+        sDRV_UART_Printf("into stop mode!\n\n");                                               
 
         //HAL_RTCEx_DeactivateWakeUpTimer(&hrtc);
         //HAL_RTCEx_SetWakeUpTimer_IT(&hrtc, 0xBE8C, RTC_WAKEUPCLOCK_RTCCLK_DIV16);
         sBSP_SYS_PWR_Init();
-        HAL_PWR_EnterSTOPMode(PWR_LOWPOWERREGULATOR_ON, PWR_STOPENTRY_WFI);
+        //HAL_PWR_EnterSTOPMode(PWR_LOWPOWERREGULATOR_ON, PWR_STOPENTRY_WFI);
 
         
-        //HAL_Delay(1000);
+        HAL_Delay(500);
     }
 }
 

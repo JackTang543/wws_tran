@@ -8,7 +8,9 @@ extern "C"{
 #endif
 
 //使用超高解析度
-#define sDRV_BMP280_USE_MAX_RESOLUTION
+//#define sDRV_BMP280_USE_MAX_RESOLUTION
+//使用超低功耗
+#define sDRV_BMP280_USE_ULTRA_LOW_PWR
 
 //使用定点计算,如果不强调,默认浮点运算
 #define sDRV_BMP280_USE_FIXED_POINT_COMPE
@@ -40,6 +42,7 @@ typedef struct{
 
 
 HAL_StatusTypeDef sDRV_BMP280_Init();
+void sDRV_BMP280_SetModeSleep();
 HAL_StatusTypeDef sDRV_BMP280_GetMeasure();
 double sDRV_BMP280_GetPress();
 double sDRV_BMP280_GetTemp();

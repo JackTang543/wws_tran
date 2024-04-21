@@ -7,6 +7,9 @@
 extern "C"{
 #endif
 
+void sDRV_TEMT_Init();
+void sDRV_TEMT_Startup();
+void sDRV_TEMT_Shutdown();
 float sDRV_TEMT_GetLight();
 
 
