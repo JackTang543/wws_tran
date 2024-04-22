@@ -7,7 +7,7 @@
 extern "C"{
 #endif
 
-
+void sBSP_GPIO_LED_Init();
 
 
 #ifdef __cplusplus

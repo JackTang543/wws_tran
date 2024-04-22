@@ -7,7 +7,11 @@ void sBSP_ADC_Init(){
     //ADC1
     hadc.Instance = ADC1;
     //过采样
-    hadc.Init.OversamplingMode = ENABLE;
+    hadc.Init.OversamplingMode = DISABLE;
+    //! 过采样能把12位的ADC变成16位的,代价是损失速度,转换时要注意位数变化了
+    //hadc.Init.Oversample.Ratio = ADC_OVERSAMPLING_RATIO_256;
+    //hadc.Init.Oversample.RightBitShift = ADC_RIGHTBITSHIFT_NONE;
+    //hadc.Init.Oversample.TriggeredMode = ADC_TRIGGEREDMODE_SINGLE_TRIGGER;
     //选择ADC的时钟分频
     hadc.Init.ClockPrescaler = ADC_CLOCK_SYNC_PCLK_DIV2;
     //ADC解析度
@@ -56,7 +60,7 @@ uint16_t sBSP_ADC_GetChannel(uint32_t channel){
 
     //启动转换,等待结果
     HAL_ADC_Start(&hadc);
-    HAL_ADC_PollForConversion(&hadc, 10);
+    HAL_ADC_PollForConversion(&hadc, 100);
 
     uint16_t val = 0;
     val = HAL_ADC_GetValue(&hadc);

@@ -10,7 +10,11 @@
 extern "C"{
 #endif
 
-void sFUNC_InitLED();
+void sFUNC_2D4GHZ_PWR_Init();
+void sFUNC_Set2D4GHZ_PWR(uint8_t is_en);
+
+void sFUNC_SetRTCAlarmA(uint32_t seconds);
+void sFUNC_InitBMP280();
 void sFUNC_Init2d4GHz();
 float sAPP_Func_GetVbat();
 

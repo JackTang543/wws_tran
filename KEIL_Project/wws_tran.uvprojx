@@ -495,11 +495,6 @@
               <FilePath>..\sDRV\sDRV_TEMT6000.c</FilePath>
             </File>
             <File>
-              <FileName>sDRV_LED.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\sDRV\sDRV_LED.c</FilePath>
-            </File>
-            <File>
               <FileName>sDRV_UART.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\sDRV\sDRV_UART.c</FilePath>

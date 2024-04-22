@@ -91,4 +91,10 @@ void HAL_RTC_MspInit(RTC_HandleTypeDef* rtcHandle){
     }
 }
 
+void HAL_RTCEx_WakeUpTimerEventCallback(RTC_HandleTypeDef *hrtc){
+    __HAL_PWR_CLEAR_FLAG(PWR_FLAG_WU);
+}
+
+
+
 #endif

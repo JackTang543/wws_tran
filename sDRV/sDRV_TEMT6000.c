@@ -10,25 +10,25 @@ extern "C" {
 #define AVERAGE_NUM     (8)
 
 void sDRV_TEMT_Init(){
-    __GPIOB_CLK_ENABLE();
+    __GPIOA_CLK_ENABLE();
     
     GPIO_InitTypeDef GPIO_InitStruct = {0};
 
     GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
-    GPIO_InitStruct.Pin = GPIO_PIN_3;
+    GPIO_InitStruct.Pin = GPIO_PIN_15;
     GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
     GPIO_InitStruct.Alternate = 0x0;
     //初始化TEMT6000的VCC
-    HAL_GPIO_Init(GPIOB,&GPIO_InitStruct);
+    HAL_GPIO_Init(GPIOA,&GPIO_InitStruct);
 
 }
 
 void sDRV_TEMT_Startup(){
-    HAL_GPIO_WritePin(GPIOB,GPIO_PIN_3,1);
+    HAL_GPIO_WritePin(GPIOA,GPIO_PIN_15,1);
 }
 
 void sDRV_TEMT_Shutdown(){
-    HAL_GPIO_WritePin(GPIOB,GPIO_PIN_3,0);
+    HAL_GPIO_WritePin(GPIOA,GPIO_PIN_15,0);
 }
 
 float sDRV_TEMT_GetLight(){

@@ -31,7 +31,7 @@ static inline void reciBytes(uint8_t *pData,uint16_t length){
 }
 //设置CE电平
 static inline void setCE(uint8_t lv){
-    HAL_GPIO_WritePin(GPIOB,GPIO_PIN_0,lv);
+    HAL_GPIO_WritePin(GPIOB,GPIO_PIN_6,lv);
 }
 //设置CS电平
 static inline void setCS(uint8_t cs){
@@ -51,7 +51,7 @@ static void init_gpio(){
     __GPIOB_CLK_ENABLE();
     GPIO_InitTypeDef gpio_init;
     gpio_init.Mode  = GPIO_MODE_OUTPUT_PP;
-    gpio_init.Pin   = GPIO_PIN_0;
+    gpio_init.Pin   = GPIO_PIN_6;
     gpio_init.Pull  = GPIO_PULLDOWN;
     gpio_init.Speed = GPIO_SPEED_FREQ_HIGH;
     //配置PB0->CE,下拉,高电平有效
@@ -59,9 +59,9 @@ static void init_gpio(){
 
     __GPIOB_CLK_ENABLE();
     gpio_init.Mode  = GPIO_MODE_IT_FALLING;
-    gpio_init.Pin   = GPIO_PIN_7;
+    gpio_init.Pin   = GPIO_PIN_0;
     gpio_init.Pull  = GPIO_PULLUP;
-    //PB7<-IRQ,上拉,低电平有效
+    //PB0<-IRQ,上拉,低电平有效
     HAL_GPIO_Init(GPIOB,&gpio_init);
 
     //

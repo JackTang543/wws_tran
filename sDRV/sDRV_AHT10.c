@@ -42,7 +42,7 @@ void sDRV_AHT10_Init(void){
 }
 
 //开始测量
-void sDRV_AHT10_BeginMeasure(){
+void sDRV_AHT10_StartMeasure(){
     I2C_SendData(AHT10_ADDR,&aht10_comm_measure[0],3);
 }
 

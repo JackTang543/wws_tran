@@ -17,7 +17,6 @@
 "..\keil_output\sdrv_aht10.o"
 "..\keil_output\sdrv_bmp280.o"
 "..\keil_output\sdrv_temt6000.o"
-"..\keil_output\sdrv_led.o"
 "..\keil_output\sdrv_uart.o"
 "..\keil_output\sbsp_tim.o"
 "..\keil_output\sdrv_si24r1.o"

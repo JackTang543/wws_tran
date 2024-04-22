@@ -12,7 +12,7 @@ extern "C"{
 
 
 void sDRV_AHT10_Init(void);
-void sDRV_AHT10_BeginMeasure();
+void sDRV_AHT10_StartMeasure();
 void sDRV_AHT10_EndMeasure();
 float sDRV_AHT10_GetHumi();
 float sDRV_AHT10_GetTemp();

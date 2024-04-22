@@ -21,7 +21,9 @@
         "sbsp_softspi.h": "c",
         "stm32l0xx_hal_adc_ex.h": "c",
         "main.h": "c",
-        "sbsp_rtc.h": "c"
+        "sbsp_rtc.h": "c",
+        "sapp_func.h": "c",
+        "sdrv_si24r1.h": "c"
     },
     "commentTranslate.hover.enabled": true
 }
